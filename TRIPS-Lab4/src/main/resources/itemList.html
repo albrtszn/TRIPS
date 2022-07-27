@@ -1,0 +1,35 @@
+	<!DOCTYPE html>
+	<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+	<head>
+	<meta charset="UTF-8">
+	<title>Item List</title>
+
+	<style type="text/css">
+	body{
+	background-color:#ffcccc;
+	}
+	</style>
+	</head>
+	<body>
+	<h1 style="font-weight:bold; color:grey; border-bottom: 2.5px solid black;" align="center">Item List</h1>
+	<a href="addItem">Add Item</a>
+	</br></br>
+
+	<div>
+	<table border="1" align="center" style="position;width:525px;">
+	<tr>
+	<th>First Name</th>
+	<th>Second Name</th>
+	<th>Favour Technologies</th>
+	<th>Profession</th>
+	</tr>
+	<tr th:each ="item : ${items}">
+	<td th:utext="${item.FName}">...</td>
+	<td th:utext="${item.SName}">...</td>
+	<td th:utext="${item.favourTech}">...</td>
+	<td th:utext="${item.prof}">...</td>
+	</tr>
+	</table>
+	</div>
+	</body>
+	</html>

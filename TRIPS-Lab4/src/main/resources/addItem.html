@@ -1,0 +1,48 @@
+	<!DOCTYPE html>
+	<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+	<head>
+	<meta charset="UTF-8">
+	<title>Add Item</title>
+
+	<style type="text/css">
+	body{
+	background-color:#ffcccc;
+	}
+	</style>
+	</head>
+	<body>
+	<h1 style="font-weight:bold; color:grey; border-bottom: 2.5px solid black;" align="center">Add Item</h1>
+	<a href="itemList">Item List</a>
+	</br></br>
+
+	<FORM th:action="@{/addItem}"
+	th:object="${itemForm}" method="POST">
+	First name:
+	<p><input type="text" style="position:absolute; left:100px; top:110px; padding:5px; " value=" " th:field="*{FName}"/></p>
+
+	Second name:
+	<p><input type="text" style="position:absolute; left:100px; top:145px; padding:5px;" value="" th:field ="*{SName}"/></p>
+	<p><select name="favourTech" size="5" style="width:255px;" multiple th:field="*{favourTech}">
+	<option selected value="null" checked>Your favour tech</option>
+	<option value="Docker">Docker</option>
+	<option value="MongoDB">MongoDB</option>
+	<option value="PostgreSQL">PostgreSQL</option>
+	<option value="SpringMVC">SpringMVC</option>
+	</select>
+	</br></p>
+	<p><input type="RADIO" value="student" name="prof" th:field="*{prof}">Я являюсь студентом<BR></p>
+	<p><input type="RADIO" value="employee" name="prof" th:field="*{prof}">Я являюсь рабочим<br></p>
+	<p><input type="RADIO" value="no_profession" name="prof" checked th:field="*{prof}">Я не являюсь занятым в экономике РБ<BR></p>
+	</br>
+	<p><input type="CHECKBOX" name="access" value="True" th:field="*{access}">Вы даете согласие на обработку данных<BR></p>
+
+	<p><INPUT TYPE="SUBMIT" style="width:127.5px; height:50px" value="CONFIRM" NAME = "CONFIRM">
+	<INPUT TYPE="RESET" style=" width:127.5px; height:50px" value="CLEAR" NAME = "CLEAR"></p>
+
+	</FORM>
+	<div  th:if="${errorMessage}" th::utext="${errorMessage}" style="color:red; font-size:15px; border-style:double; border-color:red; position:absolute; left:320px; top:140px;">
+	Поля имени и фамилии должны быть заполненны</div>
+	<div  th:if="${errorMessage1}" th::utext="${errorMessage1}" style="color:red; font-size:15px; border-style:double; border-color:red; position:absolute; left:320px; top:435px;">
+	Выдолжны дать согласие на обработку данных</div>
+	</body>
+	</html>
