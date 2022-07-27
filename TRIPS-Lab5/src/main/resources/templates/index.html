@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <style type="text/css">
+        body{
+            background-color:#bbbb77;
+            padding-left: 100px;
+            padding-right: 100px;
+            min-width: 240px;
+        }
+        .link{
+           border: 1px solid rgb(0, 0, 0);
+           padding: 10px; margin: 20px; width: 400px;
+           border-radius: 9px;
+           background-color: #a3a375;
+        }
+        .header {
+            font-size: 20px;
+            text-align: center;
+            padding: 0.5em 0;
+            background-color: #4a4a4a;
+            color: #f9f9f9;
+            margin-top: -10px;
+            margin-left: -200px;
+            margin-right: -190px;
+        }
+        .quest {
+        background: #a3a375;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="header" align="center">Главная</h1>
+    </br>
+    <a th:href="@{/table}" class="link">Результаты</a>
+    <a th:href="@{/test}" class="link">Тест №1</a>
+</body>
+</html>

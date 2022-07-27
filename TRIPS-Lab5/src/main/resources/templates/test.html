@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <style type="text/css">
+        body{
+            background-color:#bbbb77;
+            padding-left: 100px;
+            padding-right: 100px;
+            min-width: 240px;
+        }
+        .link{
+           border: 1px solid rgb(0, 0, 0);
+           padding: 10px; margin: 20px; width: 400px;
+           border-radius: 9px;
+           background-color: #a3a375;
+        }
+      .header {
+            font-size: 20px;
+            text-align: center;
+            padding: 0.5em 0;
+            background-color: #4a4a4a;
+            color: #f9f9f9;
+            margin-top: -10px;
+            margin-left: -200px;
+            margin-right: -190px;
+        }
+        .quest {
+        background: #a3a375;
+        }
+    </style>
+    <script type="text/javascript">
+        function error(){
+            var fname = document.getElementById("FName");
+            var sname = document.getElementById("SName");
+            var group = document.getElementById("Grp");
+
+            if(fname.value.length==0){
+            alert("Введите имя");
+            return false;
+            }
+            if(sname.value.length==0){
+            alert("введите фамилию");
+            return false;
+            }
+            if(group.value.length==0){
+            alert("Введите группу");
+            return false;
+            }
+            for(i=1;i<=10;i++){
+            var first = document.getElementById("q"+i+"1");
+            var second = document.getElementById("q"+i+"2");
+            var third = document.getElementById("q"+i+"3");
+            if(!first.checked && !second.checked && !third.checked){
+            alert("Ответьте на вопрос № "+ i);
+            return false;
+                    }
+                }
+        }
+    </script>
+</head>
+<body>
+<h1 class="header" align="center">Тест №1</h1>
+<a th:href="@{/}" class="link">Главная</a>
+<a th:href="@{/table}" class="link">Результаты</a>
+</br></br>
+<div style="font-weight:bold; color:grey; border-bottom: 2.5px solid black;"></div>
+</br>
+<FORM th:action="@{/test}"
+      th:object="${itemForm}" method="POST" onsubmit="return error()">
+    <label>First name:</label>
+    <p><input type="text" style="position:absolute; left:200px; top:110px; padding:5px; " value="" th:field="*{FName}" id="FName"/><label for="q11"></label></p>
+    <label>Second name:</label>
+    <p><input type="text" style="position:absolute; left:200px; top:145px; padding:5px;" value="" th:field ="*{SName}" id="SName"/></p>
+    <label>Group:</label>
+    <p><input type="text" style="position:absolute; left:200px; top:180px; padding:5px; " value="" th:field="*{Grp}" id="Grp"/></p>
+
+    <div class="quest">
+    <p>№1 Сёння я быў у ___ , набыў там адну цікавую кнігу.?</p>
+        <p><input type="RADIO" value="fail" name="q1" th:field="*{q1}" id="q11"/><label for="q11">бiблятэцы</label><BR></p>
+        <p><input type="RADIO" value="correct" name="q1" th:field="*{q1}" id="q12"/><label for="q12">кiнгарнi</label><br></p>
+        <p><input type="RADIO" value="fail" name="q1" th:field="*{q1}"  id="q13"/><label for="q13">бiблiятэке</label><BR></p>
+        </br>
+    </div>
+
+    <div class="quest">
+    <p>№2 Мае сябры ўдзельнічаюць ___ .?</p>
+        <p><input type="RADIO" value="correct" name="q2" th:field="*{q2}" id="q21"/><label for="q21">у гэтым канцэрце</label><BR></p>
+        <p><input type="RADIO" value="fail" name="q2" th:field="*{q2}" id="q22"/><label for="q22">гэтаму канцэрту</label><br></p>
+        <p><input type="RADIO" value="fail" name="q2" th:field="*{q2}" id="q23"/><label for="q23">на гэтым канцерце</label><BR></p>
+        </br>
+    </div>
+
+    <div class="quest">
+    <p>№3 За столом вас просят налить "трунак", что будете наливать?</p>
+        <p><input type="RADIO" value="fail" name="q3" th:field="*{q3}" id="q31"/><label for="q31">Березовый сок</label><BR></p>
+        <p><input type="RADIO" value="correct" name="q3" th:field="*{q3}" id="q32"/><label for="q32">Алкоголь</label><br></p>
+        <p><input type="RADIO" value="fail" name="q3" th:field="*{q3}" id="q33"/><label for="q33">Откажусь наливать</label><BR></p>
+        </br>
+    </div>
+
+    <div class="quest">
+    <p>№4 У колькіх словах на месцы пропуску пішацца літара "я" ?</p>
+        <img th:src="@{media/quest1.jpg}" height="251" width="584.83" style="display: block; margin-left: auto;margin-right: auto;" alt="quest1.jpg"/>
+        <p><input type="RADIO" value="fail" name="q4" th:field="*{q4}" id="q41"/><label for="q41">2</label><BR></p>
+        <p><input type="RADIO" value="fail" name="q4" th:field="*{q4}" id="q42"/><label for="q42">3</label><br></p>
+        <p><input type="RADIO" value="correct" name="q4" th:field="*{q4}" id="q43"/><label for="q43">4</label><BR></p>
+        </br>
+    </div>
+
+    <div class="quest">
+    <p>№5 Праз злучок пішацца назоўнік: ?</p>
+        <p><input type="RADIO" value="fail" name="q5" th:field="*{q5}" id="q51"/><label for="q51">(супер) маркет</label><BR></p>
+        <p><input type="RADIO" value="fail" name="q5" th:field="*{q5}" id="q52"/><label for="q52">(двух) моўе</label><br></p>
+        <p><input type="RADIO" value="correct" name="q5" th:field="*{q5}" id="q53"/>(контр) агент<label for="q53"></label><BR></p>
+        </br>
+    </div>
+
+    <div class="quest">
+    <p>№6 Что изображено на фото?</p>
+        <!-- background-image: url(file:///C:/Users/Professional/IdeaProjects/Trips_lab5/src/main/resources/templates/media/puscha.jp);
+        display: block; margin-left: auto;margin-right: auto;
+        C:\Users\Professional\IdeaProjects\Trips_lab5\src\main\resources\templates\media\puscha.jpg
+        file:///C:/Users/Professional/IdeaProjects/Trips_lab5/src/main/resources/templates/media/puscha.jpg
+        https://trikky.ru/wp-content/blogs.dir/1/files/2020/06/03/puscha.jpg
+        -->
+        <img th:src="@{media/puscha.jpg}" height="200" width="291" style="display: block; margin-left: auto;margin-right: auto;" alt="puscha.jpg"/>
+        <p><input type="RADIO" value="fail" name="q6" th:field="*{q6}" id="q61"/><label for="q61">Капібара</label><BR></p>
+        <p><input type="RADIO" value="correct" name="q6" th:field="*{q6}" id="q62"/><label for="q62">Зубр</label><br></p>
+        <p><input type="RADIO" value="fail" name="q6" th:field="*{q6}" id="q63"/><label for="q63">Кабыла</label><BR></p>
+        </br>
+    </div>
+
+    <div class="quest">
+    <p>№7 Учора я ___ купіла чырвонае паліто. ?</p>
+        <p><input type="RADIO" value="fail" name="q7" th:field="*{q7}" id="q71"/><label for="q71">сябе</label><BR></p>
+        <p><input type="RADIO" value="correct" name="q7" th:field="*{q7}" id="q72"/><label for="q72">сабе</label><br></p>
+        <p><input type="RADIO" value="fail" name="q7" th:field="*{q7}" id="q73"/><label for="q73">мне</label><BR></p>
+        </br>
+    </div>
+
+    <div class="quest">
+    <p>№8 Разам пішацца слова:?</p>
+        <p><input type="RADIO" value="correct" name="q8" th:field="*{q8}" id="q81"/><label for="q81">(шмат) складовы</label><BR></p>
+        <p><input type="RADIO" value="fail" name="q8" th:field="*{q8}" id="q82"/><label for="q82">(блакiтна) жоуты</label><br></p>
+        <p><input type="RADIO" value="correct" name="q8" th:field="*{q8}" id="q83"/><label for="q83">(бела) грывы</label><BR></p>
+        </br>
+    </div>
+
+    <div class="quest">
+    <p>№9 Я думаю, не ___ гэтага рабіць.</p>
+        <p><input type="RADIO" value="correct" name="q9" th:field="*{q9}" id="q91"/><label for="q91">варта</label><BR></p>
+        <p><input type="RADIO" value="fail" name="q9" th:field="*{q9}" id="q92"/><label for="q92">стоiць</label><br></p>
+        <p><input type="RADIO" value="fail" name="q9" th:field="*{q9}" id="q93"/><label for="q93">добра</label><BR></p>
+        </br>
+    </div>
+
+    <div class="quest">
+    <p>№10 Апостраф пішацца ў слове: </p>
+        <p><input type="RADIO" value="fail" name="q10" th:field="*{q10}" id="q101"/><label for="q101">рэл_еф</label><BR></p>
+        <p><input type="RADIO" value="correct" name="q10" th:field="*{q10}" id="q102"/><label for="q102">IРма Юр_еуна</label><br></p>
+        <p><input type="RADIO" value="fail" name="q10" th:field="*{q10}" id="q103"/><label for="q103">здароу_е</label><BR></p>
+        </br>
+    </div>
+
+
+    <p><INPUT TYPE="SUBMIT" style="width:127.5px; height:50px" value="Закончить" >
+        <INPUT TYPE="RESET" style=" width:127.5px; height:50px" value="Очистить" ></p>
+</FORM>
+
+</body>
+</html>

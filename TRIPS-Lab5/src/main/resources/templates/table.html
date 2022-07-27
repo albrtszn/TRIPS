@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+    <style type="text/css">
+       body{
+            background-color:#bbbb77;
+            padding-left: 100px;
+            padding-right: 100px;
+            min-width: 240px;
+        }
+        .link{
+           border: 1px solid rgb(0, 0, 0);
+           padding: 10px; margin: 20px; width: 400px;
+           border-radius: 9px;
+           background-color: #a3a375;
+        }
+        .header {
+            font-size: 20px;
+            text-align: center;
+            padding: 0.5em 0;
+            background-color: #4a4a4a;
+            color: #f9f9f9;
+            margin-top: -10px;
+            margin-left: -200px;
+            margin-right: -190px;
+        }
+        .quest {
+        background: #a3a375;
+        }
+    </style>
+</head>
+<body>
+<h1 class="header" align="center">Результаты</h1>
+<a th:href="@{/}" class="link">Главная</a>
+<a th:href="@{/test}" class="link">Тест №1</a>
+</br></br>
+<div>
+    <table border="1" align="center" style="position;width:555px;">
+        <tr>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th>Class  </th>
+            <th>Grade</th>
+            <th>Question1</th>
+            <th>Question2</th>
+            <th>Question3</th>
+            <th>Question4</th>
+            <th>Question5</th>
+            <th>Question6</th>
+            <th>Question7</th>
+            <th>Question8</th>
+            <th>Question9</th>
+            <th>Question10</th>
+        </tr>
+        <tr th:each ="item : ${items}">
+            <td th:utext="${item.FName}">...</td>
+            <td th:utext="${item.SName}">...</td>
+            <td th:utext="${item.Grp}">...</td>
+            <td th:utext="${item.Grade}">...</td>
+            <td th:utext="${item.q1}">...</td>
+            <td th:utext="${item.q2}">...</td>
+            <td th:utext="${item.q3}">...</td>
+            <td th:utext="${item.q4}">...</td>
+            <td th:utext="${item.q5}">...</td>
+            <td th:utext="${item.q6}">...</td>
+            <td th:utext="${item.q7}">...</td>
+            <td th:utext="${item.q8}">...</td>
+            <td th:utext="${item.q9}">...</td>
+            <td th:utext="${item.q10}">...</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
